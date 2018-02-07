@@ -1,0 +1,1547 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MedicineModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin_Accounts">
+          <Key>
+            <PropertyRef Name="admin_id" />
+          </Key>
+          <Property Name="admin_id" Type="numeric" Precision="3" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="a_login" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="a_password" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="a_status" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="a_type" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Agreements">
+          <Key>
+            <PropertyRef Name="patient_id" />
+          </Key>
+          <Property Name="patient_id" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="sms_bool" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="email_bool" Type="char" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AnMorbi">
+          <Key>
+            <PropertyRef Name="morbi_id" />
+          </Key>
+          <Property Name="morbi_id" Type="numeric" Precision="3" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="reception_id" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="count_days" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AnVitae">
+          <Key>
+            <PropertyRef Name="vitae_id" />
+          </Key>
+          <Property Name="vitae_id" Type="numeric" Precision="3" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="reception_id" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="vitae_value" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Attendances">
+          <Key>
+            <PropertyRef Name="selected_services_id" />
+          </Key>
+          <Property Name="selected_services_id" Type="numeric" Precision="3" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="service_id" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="reception_id" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="test_column" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Communications">
+          <Key>
+            <PropertyRef Name="patient_id" />
+          </Key>
+          <Property Name="patient_id" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="sms_value" Type="varchar" MaxLength="500" />
+          <Property Name="email_value" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Complaints">
+          <Key>
+            <PropertyRef Name="complaint_id" />
+          </Key>
+          <Property Name="complaint_id" Type="numeric" Precision="3" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="reception_id" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="complaint_value" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Current_Status">
+          <Key>
+            <PropertyRef Name="st_id" />
+          </Key>
+          <Property Name="st_id" Type="numeric" Precision="3" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="reception_id" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="physique_value" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="general_state" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Diagnosis">
+          <Key>
+            <PropertyRef Name="diag_id" />
+          </Key>
+          <Property Name="diag_id" Type="numeric" Precision="3" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="reception_id" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="diag_value" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="diag_type" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Diseases">
+          <Key>
+            <PropertyRef Name="dis_id" />
+          </Key>
+          <Property Name="dis_id" Type="numeric" Precision="3" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="reception_id" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="disease_value" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Doc_Accounts">
+          <Key>
+            <PropertyRef Name="doctor_id" />
+          </Key>
+          <Property Name="doctor_id" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="doc_login" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="doc_password" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="doc_status" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="doc_type" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Doctors">
+          <Key>
+            <PropertyRef Name="doctor_id" />
+          </Key>
+          <Property Name="doctor_id" Type="numeric" Precision="3" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="doctor_name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="job_name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="room_number" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="passport_series" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="passport_number" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="doc_experience" Type="int" Nullable="false" />
+          <Property Name="phone_number" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="doc_sex" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="doc_birthdate" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="doc_photo" Type="varchar(max)" Nullable="false" />
+          <Property Name="doc_card" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="archive_number" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="doc_status" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="time_working" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Identifiers">
+          <Key>
+            <PropertyRef Name="patient_id" />
+          </Key>
+          <Property Name="patient_id" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="medcard_number" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Inspection">
+          <Key>
+            <PropertyRef Name="selected_ins_id" />
+          </Key>
+          <Property Name="selected_ins_id" Type="numeric" Precision="3" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ins_id" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="reception_id" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="inspection_status" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Locations">
+          <Key>
+            <PropertyRef Name="patient_id" />
+          </Key>
+          <Property Name="patient_id" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="home_adress" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Medications">
+          <Key>
+            <PropertyRef Name="selected_med_id" />
+          </Key>
+          <Property Name="selected_med_id" Type="numeric" Precision="3" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="med_id" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="reception_id" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="med_days" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Passports">
+          <Key>
+            <PropertyRef Name="patient_id" />
+          </Key>
+          <Property Name="patient_id" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="series" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="numbers" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Patients">
+          <Key>
+            <PropertyRef Name="patient_id" />
+          </Key>
+          <Property Name="patient_id" Type="numeric" Precision="3" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="patient_name" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="birth_date" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="photo_path" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Patients_Money">
+          <Key>
+            <PropertyRef Name="patient_id" />
+          </Key>
+          <Property Name="patient_id" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="discount_card" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Preparations">
+          <Key>
+            <PropertyRef Name="med_id" />
+          </Key>
+          <Property Name="med_id" Type="numeric" Precision="3" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="med_name" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="med_code" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="med_count" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Receptions">
+          <Key>
+            <PropertyRef Name="reception_id" />
+          </Key>
+          <Property Name="reception_id" Type="numeric" Precision="3" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="patient_id" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="doctor_id" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="date_reception" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="time_reception" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="directed" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="reception_status" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Regions">
+          <Key>
+            <PropertyRef Name="doctor_id" />
+          </Key>
+          <Property Name="doctor_id" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="region_name" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Researches">
+          <Key>
+            <PropertyRef Name="ins_id" />
+          </Key>
+          <Property Name="ins_id" Type="numeric" Precision="3" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ins_name" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="ins_price" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ins_countdays" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Services">
+          <Key>
+            <PropertyRef Name="service_id" />
+          </Key>
+          <Property Name="service_id" Type="numeric" Precision="3" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="service_name" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="service_price" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Agreements_Patients">
+          <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
+          <End Role="Agreements" Type="Self.Agreements" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Patients">
+              <PropertyRef Name="patient_id" />
+            </Principal>
+            <Dependent Role="Agreements">
+              <PropertyRef Name="patient_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AnMorbi_Receptions">
+          <End Role="Receptions" Type="Self.Receptions" Multiplicity="1" />
+          <End Role="AnMorbi" Type="Self.AnMorbi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Receptions">
+              <PropertyRef Name="reception_id" />
+            </Principal>
+            <Dependent Role="AnMorbi">
+              <PropertyRef Name="reception_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AnVitae_Receptions">
+          <End Role="Receptions" Type="Self.Receptions" Multiplicity="1" />
+          <End Role="AnVitae" Type="Self.AnVitae" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Receptions">
+              <PropertyRef Name="reception_id" />
+            </Principal>
+            <Dependent Role="AnVitae">
+              <PropertyRef Name="reception_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Attendance_Services">
+          <End Role="Services" Type="Self.Services" Multiplicity="1" />
+          <End Role="Attendances" Type="Self.Attendances" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="service_id" />
+            </Principal>
+            <Dependent Role="Attendances">
+              <PropertyRef Name="service_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Attendances_Receptions">
+          <End Role="Receptions" Type="Self.Receptions" Multiplicity="1" />
+          <End Role="Attendances" Type="Self.Attendances" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Receptions">
+              <PropertyRef Name="reception_id" />
+            </Principal>
+            <Dependent Role="Attendances">
+              <PropertyRef Name="reception_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Communications_Patients">
+          <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
+          <End Role="Communications" Type="Self.Communications" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Patients">
+              <PropertyRef Name="patient_id" />
+            </Principal>
+            <Dependent Role="Communications">
+              <PropertyRef Name="patient_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Complaints_Receptions">
+          <End Role="Receptions" Type="Self.Receptions" Multiplicity="1" />
+          <End Role="Complaints" Type="Self.Complaints" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Receptions">
+              <PropertyRef Name="reception_id" />
+            </Principal>
+            <Dependent Role="Complaints">
+              <PropertyRef Name="reception_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Current_Status_Receptions">
+          <End Role="Receptions" Type="Self.Receptions" Multiplicity="1" />
+          <End Role="Current_Status" Type="Self.Current_Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Receptions">
+              <PropertyRef Name="reception_id" />
+            </Principal>
+            <Dependent Role="Current_Status">
+              <PropertyRef Name="reception_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Diagnosis_Receptions">
+          <End Role="Receptions" Type="Self.Receptions" Multiplicity="1" />
+          <End Role="Diagnosis" Type="Self.Diagnosis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Receptions">
+              <PropertyRef Name="reception_id" />
+            </Principal>
+            <Dependent Role="Diagnosis">
+              <PropertyRef Name="reception_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Diseases_Receptions">
+          <End Role="Receptions" Type="Self.Receptions" Multiplicity="1" />
+          <End Role="Diseases" Type="Self.Diseases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Receptions">
+              <PropertyRef Name="reception_id" />
+            </Principal>
+            <Dependent Role="Diseases">
+              <PropertyRef Name="reception_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Doc_Accounts_Doctors">
+          <End Role="Doctors" Type="Self.Doctors" Multiplicity="1" />
+          <End Role="Doc_Accounts" Type="Self.Doc_Accounts" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Doctors">
+              <PropertyRef Name="doctor_id" />
+            </Principal>
+            <Dependent Role="Doc_Accounts">
+              <PropertyRef Name="doctor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Identifiers_Patients">
+          <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
+          <End Role="Identifiers" Type="Self.Identifiers" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Patients">
+              <PropertyRef Name="patient_id" />
+            </Principal>
+            <Dependent Role="Identifiers">
+              <PropertyRef Name="patient_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inspection_Receptions">
+          <End Role="Receptions" Type="Self.Receptions" Multiplicity="1" />
+          <End Role="Inspection" Type="Self.Inspection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Receptions">
+              <PropertyRef Name="reception_id" />
+            </Principal>
+            <Dependent Role="Inspection">
+              <PropertyRef Name="reception_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inspection_Researches">
+          <End Role="Researches" Type="Self.Researches" Multiplicity="1" />
+          <End Role="Inspection" Type="Self.Inspection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Researches">
+              <PropertyRef Name="ins_id" />
+            </Principal>
+            <Dependent Role="Inspection">
+              <PropertyRef Name="ins_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Locations_Patients">
+          <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
+          <End Role="Locations" Type="Self.Locations" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Patients">
+              <PropertyRef Name="patient_id" />
+            </Principal>
+            <Dependent Role="Locations">
+              <PropertyRef Name="patient_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Medications_Preparations">
+          <End Role="Preparations" Type="Self.Preparations" Multiplicity="1" />
+          <End Role="Medications" Type="Self.Medications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Preparations">
+              <PropertyRef Name="med_id" />
+            </Principal>
+            <Dependent Role="Medications">
+              <PropertyRef Name="med_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Medications_Receptions">
+          <End Role="Receptions" Type="Self.Receptions" Multiplicity="1" />
+          <End Role="Medications" Type="Self.Medications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Receptions">
+              <PropertyRef Name="reception_id" />
+            </Principal>
+            <Dependent Role="Medications">
+              <PropertyRef Name="reception_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Passports_Patients">
+          <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
+          <End Role="Passports" Type="Self.Passports" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Patients">
+              <PropertyRef Name="patient_id" />
+            </Principal>
+            <Dependent Role="Passports">
+              <PropertyRef Name="patient_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Patients_Money_Patients">
+          <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
+          <End Role="Patients_Money" Type="Self.Patients_Money" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Patients">
+              <PropertyRef Name="patient_id" />
+            </Principal>
+            <Dependent Role="Patients_Money">
+              <PropertyRef Name="patient_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Receptions_Doctors">
+          <End Role="Doctors" Type="Self.Doctors" Multiplicity="1" />
+          <End Role="Receptions" Type="Self.Receptions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctors">
+              <PropertyRef Name="doctor_id" />
+            </Principal>
+            <Dependent Role="Receptions">
+              <PropertyRef Name="doctor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Receptions_Patients">
+          <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
+          <End Role="Receptions" Type="Self.Receptions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patients">
+              <PropertyRef Name="patient_id" />
+            </Principal>
+            <Dependent Role="Receptions">
+              <PropertyRef Name="patient_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Regions_Doctors">
+          <End Role="Doctors" Type="Self.Doctors" Multiplicity="1" />
+          <End Role="Regions" Type="Self.Regions" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Doctors">
+              <PropertyRef Name="doctor_id" />
+            </Principal>
+            <Dependent Role="Regions">
+              <PropertyRef Name="doctor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MedicineModelStoreContainer">
+          <EntitySet Name="Admin_Accounts" EntityType="Self.Admin_Accounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Agreements" EntityType="Self.Agreements" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AnMorbi" EntityType="Self.AnMorbi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AnVitae" EntityType="Self.AnVitae" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Attendances" EntityType="Self.Attendances" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Communications" EntityType="Self.Communications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Complaints" EntityType="Self.Complaints" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Current_Status" EntityType="Self.Current_Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Diagnosis" EntityType="Self.Diagnosis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Diseases" EntityType="Self.Diseases" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Doc_Accounts" EntityType="Self.Doc_Accounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Doctors" EntityType="Self.Doctors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Identifiers" EntityType="Self.Identifiers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inspection" EntityType="Self.Inspection" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Locations" EntityType="Self.Locations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medications" EntityType="Self.Medications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Passports" EntityType="Self.Passports" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patients" EntityType="Self.Patients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patients_Money" EntityType="Self.Patients_Money" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Preparations" EntityType="Self.Preparations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Receptions" EntityType="Self.Receptions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Regions" EntityType="Self.Regions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Researches" EntityType="Self.Researches" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Agreements_Patients" Association="Self.FK_Agreements_Patients">
+            <End Role="Patients" EntitySet="Patients" />
+            <End Role="Agreements" EntitySet="Agreements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AnMorbi_Receptions" Association="Self.FK_AnMorbi_Receptions">
+            <End Role="Receptions" EntitySet="Receptions" />
+            <End Role="AnMorbi" EntitySet="AnMorbi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AnVitae_Receptions" Association="Self.FK_AnVitae_Receptions">
+            <End Role="Receptions" EntitySet="Receptions" />
+            <End Role="AnVitae" EntitySet="AnVitae" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Attendance_Services" Association="Self.FK_Attendance_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="Attendances" EntitySet="Attendances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Attendances_Receptions" Association="Self.FK_Attendances_Receptions">
+            <End Role="Receptions" EntitySet="Receptions" />
+            <End Role="Attendances" EntitySet="Attendances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Communications_Patients" Association="Self.FK_Communications_Patients">
+            <End Role="Patients" EntitySet="Patients" />
+            <End Role="Communications" EntitySet="Communications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Complaints_Receptions" Association="Self.FK_Complaints_Receptions">
+            <End Role="Receptions" EntitySet="Receptions" />
+            <End Role="Complaints" EntitySet="Complaints" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Current_Status_Receptions" Association="Self.FK_Current_Status_Receptions">
+            <End Role="Receptions" EntitySet="Receptions" />
+            <End Role="Current_Status" EntitySet="Current_Status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Diagnosis_Receptions" Association="Self.FK_Diagnosis_Receptions">
+            <End Role="Receptions" EntitySet="Receptions" />
+            <End Role="Diagnosis" EntitySet="Diagnosis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Diseases_Receptions" Association="Self.FK_Diseases_Receptions">
+            <End Role="Receptions" EntitySet="Receptions" />
+            <End Role="Diseases" EntitySet="Diseases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Doc_Accounts_Doctors" Association="Self.FK_Doc_Accounts_Doctors">
+            <End Role="Doctors" EntitySet="Doctors" />
+            <End Role="Doc_Accounts" EntitySet="Doc_Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Identifiers_Patients" Association="Self.FK_Identifiers_Patients">
+            <End Role="Patients" EntitySet="Patients" />
+            <End Role="Identifiers" EntitySet="Identifiers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inspection_Receptions" Association="Self.FK_Inspection_Receptions">
+            <End Role="Receptions" EntitySet="Receptions" />
+            <End Role="Inspection" EntitySet="Inspection" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inspection_Researches" Association="Self.FK_Inspection_Researches">
+            <End Role="Researches" EntitySet="Researches" />
+            <End Role="Inspection" EntitySet="Inspection" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Locations_Patients" Association="Self.FK_Locations_Patients">
+            <End Role="Patients" EntitySet="Patients" />
+            <End Role="Locations" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Medications_Preparations" Association="Self.FK_Medications_Preparations">
+            <End Role="Preparations" EntitySet="Preparations" />
+            <End Role="Medications" EntitySet="Medications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Medications_Receptions" Association="Self.FK_Medications_Receptions">
+            <End Role="Receptions" EntitySet="Receptions" />
+            <End Role="Medications" EntitySet="Medications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Passports_Patients" Association="Self.FK_Passports_Patients">
+            <End Role="Patients" EntitySet="Patients" />
+            <End Role="Passports" EntitySet="Passports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Patients_Money_Patients" Association="Self.FK_Patients_Money_Patients">
+            <End Role="Patients" EntitySet="Patients" />
+            <End Role="Patients_Money" EntitySet="Patients_Money" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Receptions_Doctors" Association="Self.FK_Receptions_Doctors">
+            <End Role="Doctors" EntitySet="Doctors" />
+            <End Role="Receptions" EntitySet="Receptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Receptions_Patients" Association="Self.FK_Receptions_Patients">
+            <End Role="Patients" EntitySet="Patients" />
+            <End Role="Receptions" EntitySet="Receptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Regions_Doctors" Association="Self.FK_Regions_Doctors">
+            <End Role="Doctors" EntitySet="Doctors" />
+            <End Role="Regions" EntitySet="Regions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MedicineModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin_Accounts">
+          <Key>
+            <PropertyRef Name="admin_id" />
+          </Key>
+          <Property Name="admin_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="a_login" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="a_password" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="a_status" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="a_type" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Agreement">
+          <Key>
+            <PropertyRef Name="patient_id" />
+          </Key>
+          <Property Name="patient_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="sms_bool" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="email_bool" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK_Agreements_Patients" FromRole="Agreements" ToRole="Patients" />
+        </EntityType>
+        <EntityType Name="AnMorbi">
+          <Key>
+            <PropertyRef Name="morbi_id" />
+          </Key>
+          <Property Name="morbi_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="reception_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="count_days" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="Reception" Relationship="Self.FK_AnMorbi_Receptions" FromRole="AnMorbi" ToRole="Receptions" />
+        </EntityType>
+        <EntityType Name="AnVitae">
+          <Key>
+            <PropertyRef Name="vitae_id" />
+          </Key>
+          <Property Name="vitae_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="reception_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="vitae_value" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Reception" Relationship="Self.FK_AnVitae_Receptions" FromRole="AnVitae" ToRole="Receptions" />
+        </EntityType>
+        <EntityType Name="Attendance">
+          <Key>
+            <PropertyRef Name="selected_services_id" />
+          </Key>
+          <Property Name="selected_services_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="service_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="reception_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="test_column" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Service" Relationship="Self.FK_Attendance_Services" FromRole="Attendances" ToRole="Services" />
+          <NavigationProperty Name="Reception" Relationship="Self.FK_Attendances_Receptions" FromRole="Attendances" ToRole="Receptions" />
+        </EntityType>
+        <EntityType Name="Communication">
+          <Key>
+            <PropertyRef Name="patient_id" />
+          </Key>
+          <Property Name="patient_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="sms_value" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="email_value" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK_Communications_Patients" FromRole="Communications" ToRole="Patients" />
+        </EntityType>
+        <EntityType Name="Complaint">
+          <Key>
+            <PropertyRef Name="complaint_id" />
+          </Key>
+          <Property Name="complaint_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="reception_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="complaint_value" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Reception" Relationship="Self.FK_Complaints_Receptions" FromRole="Complaints" ToRole="Receptions" />
+        </EntityType>
+        <EntityType Name="Current_Status">
+          <Key>
+            <PropertyRef Name="st_id" />
+          </Key>
+          <Property Name="st_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="reception_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="physique_value" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="general_state" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Reception" Relationship="Self.FK_Current_Status_Receptions" FromRole="Current_Status" ToRole="Receptions" />
+        </EntityType>
+        <EntityType Name="Diagnosi">
+          <Key>
+            <PropertyRef Name="diag_id" />
+          </Key>
+          <Property Name="diag_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="reception_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="diag_value" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="diag_type" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Reception" Relationship="Self.FK_Diagnosis_Receptions" FromRole="Diagnosis" ToRole="Receptions" />
+        </EntityType>
+        <EntityType Name="Disease">
+          <Key>
+            <PropertyRef Name="dis_id" />
+          </Key>
+          <Property Name="dis_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="reception_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="disease_value" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Reception" Relationship="Self.FK_Diseases_Receptions" FromRole="Diseases" ToRole="Receptions" />
+        </EntityType>
+        <EntityType Name="Doc_Accounts">
+          <Key>
+            <PropertyRef Name="doctor_id" />
+          </Key>
+          <Property Name="doctor_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="doc_login" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="doc_password" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="doc_status" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="doc_type" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Doctor" Relationship="Self.FK_Doc_Accounts_Doctors" FromRole="Doc_Accounts" ToRole="Doctors" />
+        </EntityType>
+        <EntityType Name="Doctor">
+          <Key>
+            <PropertyRef Name="doctor_id" />
+          </Key>
+          <Property Name="doctor_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="doctor_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="job_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="room_number" Type="Decimal" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="passport_series" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="passport_number" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="doc_experience" Type="Int32" Nullable="false" />
+          <Property Name="phone_number" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="doc_sex" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="doc_birthdate" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="doc_photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="doc_card" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="archive_number" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="doc_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="time_working" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Doc_Accounts" Relationship="Self.FK_Doc_Accounts_Doctors" FromRole="Doctors" ToRole="Doc_Accounts" />
+          <NavigationProperty Name="Receptions" Relationship="Self.FK_Receptions_Doctors" FromRole="Doctors" ToRole="Receptions" />
+          <NavigationProperty Name="Region" Relationship="Self.FK_Regions_Doctors" FromRole="Doctors" ToRole="Regions" />
+        </EntityType>
+        <EntityType Name="Identifier">
+          <Key>
+            <PropertyRef Name="patient_id" />
+          </Key>
+          <Property Name="patient_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="medcard_number" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK_Identifiers_Patients" FromRole="Identifiers" ToRole="Patients" />
+        </EntityType>
+        <EntityType Name="Inspection">
+          <Key>
+            <PropertyRef Name="selected_ins_id" />
+          </Key>
+          <Property Name="selected_ins_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ins_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="reception_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="inspection_status" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Reception" Relationship="Self.FK_Inspection_Receptions" FromRole="Inspection" ToRole="Receptions" />
+          <NavigationProperty Name="Research" Relationship="Self.FK_Inspection_Researches" FromRole="Inspection" ToRole="Researches" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="patient_id" />
+          </Key>
+          <Property Name="patient_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="home_adress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK_Locations_Patients" FromRole="Locations" ToRole="Patients" />
+        </EntityType>
+        <EntityType Name="Medication">
+          <Key>
+            <PropertyRef Name="selected_med_id" />
+          </Key>
+          <Property Name="selected_med_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="med_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="reception_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="med_days" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <NavigationProperty Name="Preparation" Relationship="Self.FK_Medications_Preparations" FromRole="Medications" ToRole="Preparations" />
+          <NavigationProperty Name="Reception" Relationship="Self.FK_Medications_Receptions" FromRole="Medications" ToRole="Receptions" />
+        </EntityType>
+        <EntityType Name="Passport">
+          <Key>
+            <PropertyRef Name="patient_id" />
+          </Key>
+          <Property Name="patient_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="series" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="numbers" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK_Passports_Patients" FromRole="Passports" ToRole="Patients" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="patient_id" />
+          </Key>
+          <Property Name="patient_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="patient_name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="birth_date" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="photo_path" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Agreement" Relationship="Self.FK_Agreements_Patients" FromRole="Patients" ToRole="Agreements" />
+          <NavigationProperty Name="Communication" Relationship="Self.FK_Communications_Patients" FromRole="Patients" ToRole="Communications" />
+          <NavigationProperty Name="Identifier" Relationship="Self.FK_Identifiers_Patients" FromRole="Patients" ToRole="Identifiers" />
+          <NavigationProperty Name="Location" Relationship="Self.FK_Locations_Patients" FromRole="Patients" ToRole="Locations" />
+          <NavigationProperty Name="Passport" Relationship="Self.FK_Passports_Patients" FromRole="Patients" ToRole="Passports" />
+          <NavigationProperty Name="Patients_Money" Relationship="Self.FK_Patients_Money_Patients" FromRole="Patients" ToRole="Patients_Money" />
+          <NavigationProperty Name="Receptions" Relationship="Self.FK_Receptions_Patients" FromRole="Patients" ToRole="Receptions" />
+        </EntityType>
+        <EntityType Name="Patients_Money">
+          <Key>
+            <PropertyRef Name="patient_id" />
+          </Key>
+          <Property Name="patient_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="discount_card" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK_Patients_Money_Patients" FromRole="Patients_Money" ToRole="Patients" />
+        </EntityType>
+        <EntityType Name="Preparation">
+          <Key>
+            <PropertyRef Name="med_id" />
+          </Key>
+          <Property Name="med_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="med_name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="med_code" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="med_count" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="Medications" Relationship="Self.FK_Medications_Preparations" FromRole="Preparations" ToRole="Medications" />
+        </EntityType>
+        <EntityType Name="Reception">
+          <Key>
+            <PropertyRef Name="reception_id" />
+          </Key>
+          <Property Name="reception_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="patient_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="doctor_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="date_reception" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="time_reception" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="directed" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="reception_status" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AnMorbis" Relationship="Self.FK_AnMorbi_Receptions" FromRole="Receptions" ToRole="AnMorbi" />
+          <NavigationProperty Name="AnVitaes" Relationship="Self.FK_AnVitae_Receptions" FromRole="Receptions" ToRole="AnVitae" />
+          <NavigationProperty Name="Attendances" Relationship="Self.FK_Attendances_Receptions" FromRole="Receptions" ToRole="Attendances" />
+          <NavigationProperty Name="Complaints" Relationship="Self.FK_Complaints_Receptions" FromRole="Receptions" ToRole="Complaints" />
+          <NavigationProperty Name="Current_Status" Relationship="Self.FK_Current_Status_Receptions" FromRole="Receptions" ToRole="Current_Status" />
+          <NavigationProperty Name="Diagnosis" Relationship="Self.FK_Diagnosis_Receptions" FromRole="Receptions" ToRole="Diagnosis" />
+          <NavigationProperty Name="Diseases" Relationship="Self.FK_Diseases_Receptions" FromRole="Receptions" ToRole="Diseases" />
+          <NavigationProperty Name="Doctor" Relationship="Self.FK_Receptions_Doctors" FromRole="Receptions" ToRole="Doctors" />
+          <NavigationProperty Name="Inspections" Relationship="Self.FK_Inspection_Receptions" FromRole="Receptions" ToRole="Inspection" />
+          <NavigationProperty Name="Medications" Relationship="Self.FK_Medications_Receptions" FromRole="Receptions" ToRole="Medications" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK_Receptions_Patients" FromRole="Receptions" ToRole="Patients" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="doctor_id" />
+          </Key>
+          <Property Name="doctor_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="region_name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Doctor" Relationship="Self.FK_Regions_Doctors" FromRole="Regions" ToRole="Doctors" />
+        </EntityType>
+        <EntityType Name="Research">
+          <Key>
+            <PropertyRef Name="ins_id" />
+          </Key>
+          <Property Name="ins_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ins_name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ins_price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ins_countdays" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <NavigationProperty Name="Inspections" Relationship="Self.FK_Inspection_Researches" FromRole="Researches" ToRole="Inspection" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="service_id" />
+          </Key>
+          <Property Name="service_id" Type="Decimal" Precision="3" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="service_name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="service_price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="Attendances" Relationship="Self.FK_Attendance_Services" FromRole="Services" ToRole="Attendances" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Agreements_Patients">
+          <End Role="Patients" Type="Self.Patient" Multiplicity="1" />
+          <End Role="Agreements" Type="Self.Agreement" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Patients">
+              <PropertyRef Name="patient_id" />
+            </Principal>
+            <Dependent Role="Agreements">
+              <PropertyRef Name="patient_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AnMorbi_Receptions">
+          <End Role="Receptions" Type="Self.Reception" Multiplicity="1" />
+          <End Role="AnMorbi" Type="Self.AnMorbi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Receptions">
+              <PropertyRef Name="reception_id" />
+            </Principal>
+            <Dependent Role="AnMorbi">
+              <PropertyRef Name="reception_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AnVitae_Receptions">
+          <End Role="Receptions" Type="Self.Reception" Multiplicity="1" />
+          <End Role="AnVitae" Type="Self.AnVitae" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Receptions">
+              <PropertyRef Name="reception_id" />
+            </Principal>
+            <Dependent Role="AnVitae">
+              <PropertyRef Name="reception_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Attendance_Services">
+          <End Role="Services" Type="Self.Service" Multiplicity="1" />
+          <End Role="Attendances" Type="Self.Attendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="service_id" />
+            </Principal>
+            <Dependent Role="Attendances">
+              <PropertyRef Name="service_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Attendances_Receptions">
+          <End Role="Receptions" Type="Self.Reception" Multiplicity="1" />
+          <End Role="Attendances" Type="Self.Attendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Receptions">
+              <PropertyRef Name="reception_id" />
+            </Principal>
+            <Dependent Role="Attendances">
+              <PropertyRef Name="reception_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Communications_Patients">
+          <End Role="Patients" Type="Self.Patient" Multiplicity="1" />
+          <End Role="Communications" Type="Self.Communication" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Patients">
+              <PropertyRef Name="patient_id" />
+            </Principal>
+            <Dependent Role="Communications">
+              <PropertyRef Name="patient_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Complaints_Receptions">
+          <End Role="Receptions" Type="Self.Reception" Multiplicity="1" />
+          <End Role="Complaints" Type="Self.Complaint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Receptions">
+              <PropertyRef Name="reception_id" />
+            </Principal>
+            <Dependent Role="Complaints">
+              <PropertyRef Name="reception_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Current_Status_Receptions">
+          <End Role="Receptions" Type="Self.Reception" Multiplicity="1" />
+          <End Role="Current_Status" Type="Self.Current_Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Receptions">
+              <PropertyRef Name="reception_id" />
+            </Principal>
+            <Dependent Role="Current_Status">
+              <PropertyRef Name="reception_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Diagnosis_Receptions">
+          <End Role="Receptions" Type="Self.Reception" Multiplicity="1" />
+          <End Role="Diagnosis" Type="Self.Diagnosi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Receptions">
+              <PropertyRef Name="reception_id" />
+            </Principal>
+            <Dependent Role="Diagnosis">
+              <PropertyRef Name="reception_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Diseases_Receptions">
+          <End Role="Receptions" Type="Self.Reception" Multiplicity="1" />
+          <End Role="Diseases" Type="Self.Disease" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Receptions">
+              <PropertyRef Name="reception_id" />
+            </Principal>
+            <Dependent Role="Diseases">
+              <PropertyRef Name="reception_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Doc_Accounts_Doctors">
+          <End Role="Doctors" Type="Self.Doctor" Multiplicity="1" />
+          <End Role="Doc_Accounts" Type="Self.Doc_Accounts" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Doctors">
+              <PropertyRef Name="doctor_id" />
+            </Principal>
+            <Dependent Role="Doc_Accounts">
+              <PropertyRef Name="doctor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Receptions_Doctors">
+          <End Role="Doctors" Type="Self.Doctor" Multiplicity="1" />
+          <End Role="Receptions" Type="Self.Reception" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctors">
+              <PropertyRef Name="doctor_id" />
+            </Principal>
+            <Dependent Role="Receptions">
+              <PropertyRef Name="doctor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Regions_Doctors">
+          <End Role="Doctors" Type="Self.Doctor" Multiplicity="1" />
+          <End Role="Regions" Type="Self.Region" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Doctors">
+              <PropertyRef Name="doctor_id" />
+            </Principal>
+            <Dependent Role="Regions">
+              <PropertyRef Name="doctor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Identifiers_Patients">
+          <End Role="Patients" Type="Self.Patient" Multiplicity="1" />
+          <End Role="Identifiers" Type="Self.Identifier" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Patients">
+              <PropertyRef Name="patient_id" />
+            </Principal>
+            <Dependent Role="Identifiers">
+              <PropertyRef Name="patient_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inspection_Receptions">
+          <End Role="Receptions" Type="Self.Reception" Multiplicity="1" />
+          <End Role="Inspection" Type="Self.Inspection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Receptions">
+              <PropertyRef Name="reception_id" />
+            </Principal>
+            <Dependent Role="Inspection">
+              <PropertyRef Name="reception_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inspection_Researches">
+          <End Role="Researches" Type="Self.Research" Multiplicity="1" />
+          <End Role="Inspection" Type="Self.Inspection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Researches">
+              <PropertyRef Name="ins_id" />
+            </Principal>
+            <Dependent Role="Inspection">
+              <PropertyRef Name="ins_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Locations_Patients">
+          <End Role="Patients" Type="Self.Patient" Multiplicity="1" />
+          <End Role="Locations" Type="Self.Location" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Patients">
+              <PropertyRef Name="patient_id" />
+            </Principal>
+            <Dependent Role="Locations">
+              <PropertyRef Name="patient_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Medications_Preparations">
+          <End Role="Preparations" Type="Self.Preparation" Multiplicity="1" />
+          <End Role="Medications" Type="Self.Medication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Preparations">
+              <PropertyRef Name="med_id" />
+            </Principal>
+            <Dependent Role="Medications">
+              <PropertyRef Name="med_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Medications_Receptions">
+          <End Role="Receptions" Type="Self.Reception" Multiplicity="1" />
+          <End Role="Medications" Type="Self.Medication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Receptions">
+              <PropertyRef Name="reception_id" />
+            </Principal>
+            <Dependent Role="Medications">
+              <PropertyRef Name="reception_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Passports_Patients">
+          <End Role="Patients" Type="Self.Patient" Multiplicity="1" />
+          <End Role="Passports" Type="Self.Passport" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Patients">
+              <PropertyRef Name="patient_id" />
+            </Principal>
+            <Dependent Role="Passports">
+              <PropertyRef Name="patient_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Patients_Money_Patients">
+          <End Role="Patients" Type="Self.Patient" Multiplicity="1" />
+          <End Role="Patients_Money" Type="Self.Patients_Money" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Patients">
+              <PropertyRef Name="patient_id" />
+            </Principal>
+            <Dependent Role="Patients_Money">
+              <PropertyRef Name="patient_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Receptions_Patients">
+          <End Role="Patients" Type="Self.Patient" Multiplicity="1" />
+          <End Role="Receptions" Type="Self.Reception" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patients">
+              <PropertyRef Name="patient_id" />
+            </Principal>
+            <Dependent Role="Receptions">
+              <PropertyRef Name="patient_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MedicineContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admin_Accounts" EntityType="Self.Admin_Accounts" />
+          <EntitySet Name="Agreements" EntityType="Self.Agreement" />
+          <EntitySet Name="AnMorbis" EntityType="Self.AnMorbi" />
+          <EntitySet Name="AnVitaes" EntityType="Self.AnVitae" />
+          <EntitySet Name="Attendances" EntityType="Self.Attendance" />
+          <EntitySet Name="Communications" EntityType="Self.Communication" />
+          <EntitySet Name="Complaints" EntityType="Self.Complaint" />
+          <EntitySet Name="Current_Status" EntityType="Self.Current_Status" />
+          <EntitySet Name="Diagnosis" EntityType="Self.Diagnosi" />
+          <EntitySet Name="Diseases" EntityType="Self.Disease" />
+          <EntitySet Name="Doc_Accounts" EntityType="Self.Doc_Accounts" />
+          <EntitySet Name="Doctors" EntityType="Self.Doctor" />
+          <EntitySet Name="Identifiers" EntityType="Self.Identifier" />
+          <EntitySet Name="Inspections" EntityType="Self.Inspection" />
+          <EntitySet Name="Locations" EntityType="Self.Location" />
+          <EntitySet Name="Medications" EntityType="Self.Medication" />
+          <EntitySet Name="Passports" EntityType="Self.Passport" />
+          <EntitySet Name="Patients" EntityType="Self.Patient" />
+          <EntitySet Name="Patients_Money" EntityType="Self.Patients_Money" />
+          <EntitySet Name="Preparations" EntityType="Self.Preparation" />
+          <EntitySet Name="Receptions" EntityType="Self.Reception" />
+          <EntitySet Name="Regions" EntityType="Self.Region" />
+          <EntitySet Name="Researches" EntityType="Self.Research" />
+          <EntitySet Name="Services" EntityType="Self.Service" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK_Agreements_Patients" Association="Self.FK_Agreements_Patients">
+            <End Role="Patients" EntitySet="Patients" />
+            <End Role="Agreements" EntitySet="Agreements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AnMorbi_Receptions" Association="Self.FK_AnMorbi_Receptions">
+            <End Role="Receptions" EntitySet="Receptions" />
+            <End Role="AnMorbi" EntitySet="AnMorbis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AnVitae_Receptions" Association="Self.FK_AnVitae_Receptions">
+            <End Role="Receptions" EntitySet="Receptions" />
+            <End Role="AnVitae" EntitySet="AnVitaes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Attendance_Services" Association="Self.FK_Attendance_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="Attendances" EntitySet="Attendances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Attendances_Receptions" Association="Self.FK_Attendances_Receptions">
+            <End Role="Receptions" EntitySet="Receptions" />
+            <End Role="Attendances" EntitySet="Attendances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Communications_Patients" Association="Self.FK_Communications_Patients">
+            <End Role="Patients" EntitySet="Patients" />
+            <End Role="Communications" EntitySet="Communications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Complaints_Receptions" Association="Self.FK_Complaints_Receptions">
+            <End Role="Receptions" EntitySet="Receptions" />
+            <End Role="Complaints" EntitySet="Complaints" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Current_Status_Receptions" Association="Self.FK_Current_Status_Receptions">
+            <End Role="Receptions" EntitySet="Receptions" />
+            <End Role="Current_Status" EntitySet="Current_Status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Diagnosis_Receptions" Association="Self.FK_Diagnosis_Receptions">
+            <End Role="Receptions" EntitySet="Receptions" />
+            <End Role="Diagnosis" EntitySet="Diagnosis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Diseases_Receptions" Association="Self.FK_Diseases_Receptions">
+            <End Role="Receptions" EntitySet="Receptions" />
+            <End Role="Diseases" EntitySet="Diseases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Doc_Accounts_Doctors" Association="Self.FK_Doc_Accounts_Doctors">
+            <End Role="Doctors" EntitySet="Doctors" />
+            <End Role="Doc_Accounts" EntitySet="Doc_Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Receptions_Doctors" Association="Self.FK_Receptions_Doctors">
+            <End Role="Doctors" EntitySet="Doctors" />
+            <End Role="Receptions" EntitySet="Receptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Regions_Doctors" Association="Self.FK_Regions_Doctors">
+            <End Role="Doctors" EntitySet="Doctors" />
+            <End Role="Regions" EntitySet="Regions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Identifiers_Patients" Association="Self.FK_Identifiers_Patients">
+            <End Role="Patients" EntitySet="Patients" />
+            <End Role="Identifiers" EntitySet="Identifiers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inspection_Receptions" Association="Self.FK_Inspection_Receptions">
+            <End Role="Receptions" EntitySet="Receptions" />
+            <End Role="Inspection" EntitySet="Inspections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inspection_Researches" Association="Self.FK_Inspection_Researches">
+            <End Role="Researches" EntitySet="Researches" />
+            <End Role="Inspection" EntitySet="Inspections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Locations_Patients" Association="Self.FK_Locations_Patients">
+            <End Role="Patients" EntitySet="Patients" />
+            <End Role="Locations" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Medications_Preparations" Association="Self.FK_Medications_Preparations">
+            <End Role="Preparations" EntitySet="Preparations" />
+            <End Role="Medications" EntitySet="Medications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Medications_Receptions" Association="Self.FK_Medications_Receptions">
+            <End Role="Receptions" EntitySet="Receptions" />
+            <End Role="Medications" EntitySet="Medications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Passports_Patients" Association="Self.FK_Passports_Patients">
+            <End Role="Patients" EntitySet="Patients" />
+            <End Role="Passports" EntitySet="Passports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Patients_Money_Patients" Association="Self.FK_Patients_Money_Patients">
+            <End Role="Patients" EntitySet="Patients" />
+            <End Role="Patients_Money" EntitySet="Patients_Money" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Receptions_Patients" Association="Self.FK_Receptions_Patients">
+            <End Role="Patients" EntitySet="Patients" />
+            <End Role="Receptions" EntitySet="Receptions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MedicineModelStoreContainer" CdmEntityContainer="MedicineContext">
+          <EntitySetMapping Name="Admin_Accounts">
+            <EntityTypeMapping TypeName="MedicineModel.Admin_Accounts">
+              <MappingFragment StoreEntitySet="Admin_Accounts">
+                <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+                <ScalarProperty Name="a_login" ColumnName="a_login" />
+                <ScalarProperty Name="a_password" ColumnName="a_password" />
+                <ScalarProperty Name="a_status" ColumnName="a_status" />
+                <ScalarProperty Name="a_type" ColumnName="a_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Agreements">
+            <EntityTypeMapping TypeName="MedicineModel.Agreement">
+              <MappingFragment StoreEntitySet="Agreements">
+                <ScalarProperty Name="patient_id" ColumnName="patient_id" />
+                <ScalarProperty Name="sms_bool" ColumnName="sms_bool" />
+                <ScalarProperty Name="email_bool" ColumnName="email_bool" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AnMorbis">
+            <EntityTypeMapping TypeName="MedicineModel.AnMorbi">
+              <MappingFragment StoreEntitySet="AnMorbi">
+                <ScalarProperty Name="morbi_id" ColumnName="morbi_id" />
+                <ScalarProperty Name="reception_id" ColumnName="reception_id" />
+                <ScalarProperty Name="count_days" ColumnName="count_days" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AnVitaes">
+            <EntityTypeMapping TypeName="MedicineModel.AnVitae">
+              <MappingFragment StoreEntitySet="AnVitae">
+                <ScalarProperty Name="vitae_id" ColumnName="vitae_id" />
+                <ScalarProperty Name="reception_id" ColumnName="reception_id" />
+                <ScalarProperty Name="vitae_value" ColumnName="vitae_value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Attendances">
+            <EntityTypeMapping TypeName="MedicineModel.Attendance">
+              <MappingFragment StoreEntitySet="Attendances">
+                <ScalarProperty Name="selected_services_id" ColumnName="selected_services_id" />
+                <ScalarProperty Name="service_id" ColumnName="service_id" />
+                <ScalarProperty Name="reception_id" ColumnName="reception_id" />
+                <ScalarProperty Name="test_column" ColumnName="test_column" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Communications">
+            <EntityTypeMapping TypeName="MedicineModel.Communication">
+              <MappingFragment StoreEntitySet="Communications">
+                <ScalarProperty Name="patient_id" ColumnName="patient_id" />
+                <ScalarProperty Name="sms_value" ColumnName="sms_value" />
+                <ScalarProperty Name="email_value" ColumnName="email_value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Complaints">
+            <EntityTypeMapping TypeName="MedicineModel.Complaint">
+              <MappingFragment StoreEntitySet="Complaints">
+                <ScalarProperty Name="complaint_id" ColumnName="complaint_id" />
+                <ScalarProperty Name="reception_id" ColumnName="reception_id" />
+                <ScalarProperty Name="complaint_value" ColumnName="complaint_value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Current_Status">
+            <EntityTypeMapping TypeName="MedicineModel.Current_Status">
+              <MappingFragment StoreEntitySet="Current_Status">
+                <ScalarProperty Name="st_id" ColumnName="st_id" />
+                <ScalarProperty Name="reception_id" ColumnName="reception_id" />
+                <ScalarProperty Name="physique_value" ColumnName="physique_value" />
+                <ScalarProperty Name="general_state" ColumnName="general_state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Diagnosis">
+            <EntityTypeMapping TypeName="MedicineModel.Diagnosi">
+              <MappingFragment StoreEntitySet="Diagnosis">
+                <ScalarProperty Name="diag_id" ColumnName="diag_id" />
+                <ScalarProperty Name="reception_id" ColumnName="reception_id" />
+                <ScalarProperty Name="diag_value" ColumnName="diag_value" />
+                <ScalarProperty Name="diag_type" ColumnName="diag_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Diseases">
+            <EntityTypeMapping TypeName="MedicineModel.Disease">
+              <MappingFragment StoreEntitySet="Diseases">
+                <ScalarProperty Name="dis_id" ColumnName="dis_id" />
+                <ScalarProperty Name="reception_id" ColumnName="reception_id" />
+                <ScalarProperty Name="disease_value" ColumnName="disease_value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Doc_Accounts">
+            <EntityTypeMapping TypeName="MedicineModel.Doc_Accounts">
+              <MappingFragment StoreEntitySet="Doc_Accounts">
+                <ScalarProperty Name="doctor_id" ColumnName="doctor_id" />
+                <ScalarProperty Name="doc_login" ColumnName="doc_login" />
+                <ScalarProperty Name="doc_password" ColumnName="doc_password" />
+                <ScalarProperty Name="doc_status" ColumnName="doc_status" />
+                <ScalarProperty Name="doc_type" ColumnName="doc_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Doctors">
+            <EntityTypeMapping TypeName="MedicineModel.Doctor">
+              <MappingFragment StoreEntitySet="Doctors">
+                <ScalarProperty Name="doctor_id" ColumnName="doctor_id" />
+                <ScalarProperty Name="doctor_name" ColumnName="doctor_name" />
+                <ScalarProperty Name="job_name" ColumnName="job_name" />
+                <ScalarProperty Name="room_number" ColumnName="room_number" />
+                <ScalarProperty Name="passport_series" ColumnName="passport_series" />
+                <ScalarProperty Name="passport_number" ColumnName="passport_number" />
+                <ScalarProperty Name="doc_experience" ColumnName="doc_experience" />
+                <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+                <ScalarProperty Name="doc_sex" ColumnName="doc_sex" />
+                <ScalarProperty Name="doc_birthdate" ColumnName="doc_birthdate" />
+                <ScalarProperty Name="doc_photo" ColumnName="doc_photo" />
+                <ScalarProperty Name="doc_card" ColumnName="doc_card" />
+                <ScalarProperty Name="archive_number" ColumnName="archive_number" />
+                <ScalarProperty Name="doc_status" ColumnName="doc_status" />
+                <ScalarProperty Name="time_working" ColumnName="time_working" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Identifiers">
+            <EntityTypeMapping TypeName="MedicineModel.Identifier">
+              <MappingFragment StoreEntitySet="Identifiers">
+                <ScalarProperty Name="patient_id" ColumnName="patient_id" />
+                <ScalarProperty Name="medcard_number" ColumnName="medcard_number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inspections">
+            <EntityTypeMapping TypeName="MedicineModel.Inspection">
+              <MappingFragment StoreEntitySet="Inspection">
+                <ScalarProperty Name="selected_ins_id" ColumnName="selected_ins_id" />
+                <ScalarProperty Name="ins_id" ColumnName="ins_id" />
+                <ScalarProperty Name="reception_id" ColumnName="reception_id" />
+                <ScalarProperty Name="inspection_status" ColumnName="inspection_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="MedicineModel.Location">
+              <MappingFragment StoreEntitySet="Locations">
+                <ScalarProperty Name="patient_id" ColumnName="patient_id" />
+                <ScalarProperty Name="home_adress" ColumnName="home_adress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medications">
+            <EntityTypeMapping TypeName="MedicineModel.Medication">
+              <MappingFragment StoreEntitySet="Medications">
+                <ScalarProperty Name="selected_med_id" ColumnName="selected_med_id" />
+                <ScalarProperty Name="med_id" ColumnName="med_id" />
+                <ScalarProperty Name="reception_id" ColumnName="reception_id" />
+                <ScalarProperty Name="med_days" ColumnName="med_days" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Passports">
+            <EntityTypeMapping TypeName="MedicineModel.Passport">
+              <MappingFragment StoreEntitySet="Passports">
+                <ScalarProperty Name="patient_id" ColumnName="patient_id" />
+                <ScalarProperty Name="series" ColumnName="series" />
+                <ScalarProperty Name="numbers" ColumnName="numbers" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patients">
+            <EntityTypeMapping TypeName="MedicineModel.Patient">
+              <MappingFragment StoreEntitySet="Patients">
+                <ScalarProperty Name="patient_id" ColumnName="patient_id" />
+                <ScalarProperty Name="patient_name" ColumnName="patient_name" />
+                <ScalarProperty Name="birth_date" ColumnName="birth_date" />
+                <ScalarProperty Name="photo_path" ColumnName="photo_path" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patients_Money">
+            <EntityTypeMapping TypeName="MedicineModel.Patients_Money">
+              <MappingFragment StoreEntitySet="Patients_Money">
+                <ScalarProperty Name="patient_id" ColumnName="patient_id" />
+                <ScalarProperty Name="discount_card" ColumnName="discount_card" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Preparations">
+            <EntityTypeMapping TypeName="MedicineModel.Preparation">
+              <MappingFragment StoreEntitySet="Preparations">
+                <ScalarProperty Name="med_id" ColumnName="med_id" />
+                <ScalarProperty Name="med_name" ColumnName="med_name" />
+                <ScalarProperty Name="med_code" ColumnName="med_code" />
+                <ScalarProperty Name="med_count" ColumnName="med_count" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Receptions">
+            <EntityTypeMapping TypeName="MedicineModel.Reception">
+              <MappingFragment StoreEntitySet="Receptions">
+                <ScalarProperty Name="reception_id" ColumnName="reception_id" />
+                <ScalarProperty Name="patient_id" ColumnName="patient_id" />
+                <ScalarProperty Name="doctor_id" ColumnName="doctor_id" />
+                <ScalarProperty Name="date_reception" ColumnName="date_reception" />
+                <ScalarProperty Name="time_reception" ColumnName="time_reception" />
+                <ScalarProperty Name="directed" ColumnName="directed" />
+                <ScalarProperty Name="reception_status" ColumnName="reception_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Regions">
+            <EntityTypeMapping TypeName="MedicineModel.Region">
+              <MappingFragment StoreEntitySet="Regions">
+                <ScalarProperty Name="doctor_id" ColumnName="doctor_id" />
+                <ScalarProperty Name="region_name" ColumnName="region_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Researches">
+            <EntityTypeMapping TypeName="MedicineModel.Research">
+              <MappingFragment StoreEntitySet="Researches">
+                <ScalarProperty Name="ins_id" ColumnName="ins_id" />
+                <ScalarProperty Name="ins_name" ColumnName="ins_name" />
+                <ScalarProperty Name="ins_price" ColumnName="ins_price" />
+                <ScalarProperty Name="ins_countdays" ColumnName="ins_countdays" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Services">
+            <EntityTypeMapping TypeName="MedicineModel.Service">
+              <MappingFragment StoreEntitySet="Services">
+                <ScalarProperty Name="service_id" ColumnName="service_id" />
+                <ScalarProperty Name="service_name" ColumnName="service_name" />
+                <ScalarProperty Name="service_price" ColumnName="service_price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="MedicineModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

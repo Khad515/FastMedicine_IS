@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="244aef8f156f4309a8fd0bc5f9f4e886" Name="Diagram1">
+        <EntityTypeShape EntityType="MedicineModel.Admin_Accounts" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicineModel.Agreement" Width="1.5" PointX="3" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicineModel.AnMorbi" Width="1.5" PointX="8.25" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicineModel.AnVitae" Width="1.5" PointX="8.25" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicineModel.Attendance" Width="1.5" PointX="11.25" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicineModel.Communication" Width="1.5" PointX="3" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicineModel.Complaint" Width="1.5" PointX="8.25" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicineModel.Current_Status" Width="1.5" PointX="8.25" PointY="23.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicineModel.Diagnosi" Width="1.5" PointX="8.25" PointY="25.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicineModel.Disease" Width="1.5" PointX="8.25" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicineModel.Doc_Accounts" Width="1.5" PointX="6" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicineModel.Doctor" Width="1.5" PointX="3.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicineModel.Identifier" Width="1.5" PointX="3" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicineModel.Inspection" Width="1.5" PointX="11.25" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicineModel.Location" Width="1.5" PointX="3" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicineModel.Medication" Width="1.5" PointX="11.25" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicineModel.Passport" Width="1.5" PointX="3" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicineModel.Patient" Width="1.5" PointX="0.75" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicineModel.Patients_Money" Width="1.5" PointX="3" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicineModel.Preparation" Width="1.5" PointX="9" PointY="31.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicineModel.Reception" Width="1.5" PointX="6" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicineModel.Region" Width="1.5" PointX="6" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicineModel.Research" Width="1.5" PointX="9" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicineModel.Service" Width="1.5" PointX="9" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicineModel.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="MedicineModel.FK_Agreements_Patients" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicineModel.FK_AnMorbi_Receptions" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicineModel.FK_AnVitae_Receptions" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicineModel.FK_Attendance_Services" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicineModel.FK_Attendances_Receptions" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicineModel.FK_Communications_Patients" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicineModel.FK_Complaints_Receptions" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicineModel.FK_Current_Status_Receptions" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicineModel.FK_Diagnosis_Receptions" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicineModel.FK_Diseases_Receptions" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicineModel.FK_Doc_Accounts_Doctors" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicineModel.FK_Receptions_Doctors" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicineModel.FK_Regions_Doctors" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicineModel.FK_Identifiers_Patients" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicineModel.FK_Inspection_Receptions" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicineModel.FK_Inspection_Researches" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicineModel.FK_Locations_Patients" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicineModel.FK_Medications_Preparations" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicineModel.FK_Medications_Receptions" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicineModel.FK_Passports_Patients" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicineModel.FK_Patients_Money_Patients" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicineModel.FK_Receptions_Patients" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
